@@ -9,6 +9,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.NoArgsConstructor;
 
 @Entity
@@ -26,4 +27,10 @@ public class ChatMessage {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "chatRoomAppend_id")
 	private ChatRoomAppend chatRoomAppend;
+
+	@Builder
+	ChatMessage(String id, String nickname,String message) {
+		this.nickname = nickname;
+		this.message = message;
+	}
 }
