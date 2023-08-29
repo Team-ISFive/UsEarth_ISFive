@@ -10,9 +10,12 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
+@Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class ChatRoom {
 
@@ -29,5 +32,13 @@ public class ChatRoom {
 
 	@OneToMany(mappedBy = "chatRoom")
 	private List<ChatRoomAppend> chatRoomAppends = new ArrayList<>();
+
+	@Builder
+	public ChatRoom (String roomName,String description) {
+		this.roomName = roomName;
+		this.description = description;
+	}
+
+
 
 }
