@@ -9,7 +9,7 @@ import redis.embedded.RedisServer;
 
 import java.io.IOException;
 
-@Profile("local")
+@Profile("test")
 @Configuration
 public class EmbeddedRedisConfig {
 
@@ -19,7 +19,7 @@ public class EmbeddedRedisConfig {
     private RedisServer redisServer;
 
     @PostConstruct
-    private void redisServer() throws IOException {
+    private void redisServer() {
         redisServer = new RedisServer(redisPort);
         redisServer.start();
     }

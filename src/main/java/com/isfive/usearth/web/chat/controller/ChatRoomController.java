@@ -6,14 +6,16 @@ import com.isfive.usearth.domain.chat.service.ChatService;
 import com.isfive.usearth.web.chat.dto.ChatRoomDto;
 import com.isfive.usearth.web.chat.dto.ChatRoomRequest;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/chat")
+@RequestMapping("api/chat")
 @RequiredArgsConstructor
+@Slf4j
 public class ChatRoomController {
     private final ChatService chatService;
 
@@ -23,9 +25,10 @@ public class ChatRoomController {
     }
 
     @PostMapping("/room")
-    public void createRoom( @RequestBody ChatRoomRequest request) {
+    public ChatRoomResponse createRoom( @RequestBody ChatRoomRequest request) {
+        log.info("aaaaaaaaaaaa");
         ChatRoomDto chatRoomDto = new ChatRoomDto(request);
-        chatService.createChatRoom(chatRoomDto);
+        return chatService.createChatRoom(chatRoomDto);
     }
 
     @GetMapping("/room/{roomId}")

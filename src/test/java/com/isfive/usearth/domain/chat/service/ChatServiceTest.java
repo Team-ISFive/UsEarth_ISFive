@@ -14,10 +14,11 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasSize;
 
 @SpringBootTest
-@ActiveProfiles("local")
+@ActiveProfiles("test")
 class ChatServiceTest {
 
     @Autowired ChatService chatService;
+
 
     @Test
     void createChat() {
