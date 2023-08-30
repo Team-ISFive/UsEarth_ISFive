@@ -15,7 +15,7 @@
 
 <script>
 import axios from 'axios';
-import router from "@/script/router";
+import router from "../../frontend/src/script/router";
 
 export default {
     data() {
@@ -28,7 +28,7 @@ export default {
         createChatRoom() {
 
             const dto = {
-                name: this.roomName,
+                roomName: this.roomName,
                 description: this.description
             };
 

@@ -26,7 +26,7 @@ public class ChatRoomController {
 
     @PostMapping("/room")
     public ChatRoomResponse createRoom( @RequestBody ChatRoomRequest request) {
-        log.info("aaaaaaaaaaaa");
+        log.info("{}",request.toString());
         ChatRoomDto chatRoomDto = new ChatRoomDto(request);
         return chatService.createChatRoom(chatRoomDto);
     }

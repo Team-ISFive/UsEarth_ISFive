@@ -5,14 +5,14 @@
 
         <ul>
             <li v-for="(room, index) in chatRooms" :key="index" @click="enterChatRoom(room)">
-                {{ room.name }}
+                {{ room.roomName }}
             </li>
         </ul>
     </div>
 </template>
 
 <script>
-import router from "@/script/router";
+import router from "../../frontend/src/script/router";
 import axios from "axios";
 
 
@@ -31,10 +31,12 @@ export default {
             router.push('/create-chat-room'); // 적절한 경로로 변경
         },
         findAllRoom () {
-            axios.get("/chat/rooms").then(response => {this.chatRooms = response.data})
+            axios.get("http://localhost:8080/api/chat/rooms").then(response => {
+              this.chatRooms = response.data
+            })
         },
         createRoom() {
-          axios.post("/chat/room",)
+          axios.post("http://localhost:8080/api/chat/room")
         },
         enterChatRoom() {
             router.push({path: "/chat-room-detail" })
