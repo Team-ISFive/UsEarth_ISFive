@@ -32,7 +32,7 @@ export default {
                 description: this.description
             };
 
-            axios.post('api/chat/room', dto)
+            axios.post('http://localhost:8080/api/chat/room', dto)
                 .then(response => {
                     // 성공적으로 채팅방을 생성한 후에 할 작업
                     console.log('Chat room created successfully:', response.data);
