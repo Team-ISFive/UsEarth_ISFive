@@ -4,15 +4,16 @@ import com.isfive.usearth.domain.chat.entity.ChatMessage;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
-public class ChatMessageDto {
+import java.io.Serializable;
 
+@Getter
+public class ChatMessageDto  {
     public enum MessageType {
         ENTER, TALK
     }
 
     private String roomId;
-    private String nickName;
+    private String sender;
     @Setter
     private String message;
     @Setter
@@ -21,8 +22,9 @@ public class ChatMessageDto {
 
     public ChatMessage toEntity() {
 
+
         return ChatMessage.builder()
-                .nickname(this.nickName)
+                .nickname(this.sender)
                 .message(this.message)
                 .build();
     }

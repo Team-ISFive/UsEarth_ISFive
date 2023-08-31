@@ -20,7 +20,7 @@ public class WebSocketMapping {
     public void sendChat(ChatMessageDto chatMessageDto) {
         log.info(chatMessageDto.toString());
         if (ChatMessageDto.MessageType.ENTER.equals(chatMessageDto.getType())) {
-            chatMessageDto.setMessage(chatMessageDto.getNickName() + "님이 입장하셨습니다.");
+            chatMessageDto.setMessage(chatMessageDto.getSender() + "님이 입장하셨습니다.");
         }
         String time = new SimpleDateFormat("HH:mm").format(new Date());
         chatMessageDto.setTime(time);

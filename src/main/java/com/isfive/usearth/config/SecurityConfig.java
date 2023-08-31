@@ -46,6 +46,9 @@ public class SecurityConfig {
                                 new AntPathRequestMatcher("/views/**"),
                                 new AntPathRequestMatcher("/login/**"),
                                 new AntPathRequestMatcher("/api/chat/**"),
+                                new AntPathRequestMatcher("/ws/stomp/**"),
+                                new AntPathRequestMatcher("/pub/**"),
+                                new AntPathRequestMatcher("/sub/**"),
                                 new AntPathRequestMatcher("/projects", "GET"),
                                 new AntPathRequestMatcher("/projects/{projectId}", "GET"),
                                 new AntPathRequestMatcher("/**")

@@ -4,23 +4,34 @@
         <button @click="goToCreateChatRoom"> Create Chat Room</button>
 
         <ul>
-            <li v-for="(room, index) in chatRooms" :key="index" @click="enterChatRoom(room)">
+            <li v-for="(room, index) in chatRooms" :key="index" @click="openModal(room)">
                 {{ room.roomName }}
             </li>
         </ul>
+    </div>
+
+    <!-- Chat Room Modal -->
+    <div v-if="selectedRoom" class="modal">
+        <h2>{{ selectedRoom.roomName }}</h2>
+        <p>{{ selectedRoom.description }}</p>
+        <p>인원수: {{ selectedRoom.members }}</p>
+        <button @click="enterChatRoom(selectedRoom)">채팅방 입장</button>
     </div>
 </template>
 
 <script>
 import router from "../../frontend/src/script/router";
 import axios from "axios";
+import {mapActions} from "vuex";
+
 
 
 export default {
 
     data () {
         return {
-            chatRooms: []
+            chatRooms: [],
+            selectedRoom: null
         }
     },
     created() {
@@ -31,16 +42,19 @@ export default {
             router.push('/create-chat-room'); // 적절한 경로로 변경
         },
         findAllRoom () {
-            axios.get("http://localhost:8080/api/chat/rooms").then(response => {
+            axios.get("/api/chat/rooms").then(response => {
               this.chatRooms = response.data
             })
         },
-        createRoom() {
-          axios.post("http://localhost:8080/api/chat/room")
+        openModal(room) {
+            this.selectedRoom = room;
         },
-        enterChatRoom() {
-            router.push({path: "/chat-room-detail" })
-        }
+        ...mapActions(['updateSharedData']),
+        enterChatRoom(room) {
+            this.updateSharedData(room.id); // 선택한 채팅방의 roomId를 스토어에 전달
+            // 이후 채팅방으로 이동하는 로직 추가
+            router.push({path: "/chat-room"})
+        },
     }
 };
 </script>
