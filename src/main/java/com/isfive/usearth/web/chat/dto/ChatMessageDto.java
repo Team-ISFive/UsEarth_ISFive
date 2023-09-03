@@ -1,19 +1,18 @@
 package com.isfive.usearth.web.chat.dto;
 
 import com.isfive.usearth.domain.chat.entity.ChatMessage;
-import lombok.Getter;
+import lombok.Data;
 import lombok.Setter;
 
-import java.io.Serializable;
 
-@Getter
+@Data
 public class ChatMessageDto  {
     public enum MessageType {
         ENTER, TALK
     }
 
     private String roomId;
-    private String sender;
+    private String nickname;
     @Setter
     private String message;
     @Setter
@@ -24,7 +23,7 @@ public class ChatMessageDto  {
 
 
         return ChatMessage.builder()
-                .nickname(this.sender)
+                .nickname(this.nickname)
                 .message(this.message)
                 .build();
     }

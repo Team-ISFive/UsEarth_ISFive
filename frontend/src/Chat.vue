@@ -11,7 +11,7 @@
     </div>
 
     <!-- Chat Room Modal -->
-    <div v-if="selectedRoom" class="modal">
+    <div v-if="selectedRoom" class="chat-room-detail">
         <h2>{{ selectedRoom.roomName }}</h2>
         <p>{{ selectedRoom.description }}</p>
         <p>인원수: {{ selectedRoom.members }}</p>
@@ -27,6 +27,7 @@ import {mapActions} from "vuex";
 
 
 export default {
+
 
     data () {
         return {

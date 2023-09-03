@@ -14,6 +14,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
@@ -33,5 +35,18 @@ public class ChatRoomAppend {
 
 	@OneToMany(mappedBy = "chatRoomAppend")
 	private List<ChatMessage> chatMessages = new ArrayList<>();
+
+	@Builder
+	private ChatRoomAppend(Member member,ChatRoom chatRoom) {
+		this.member = member;
+		this.chatRoom = chatRoom;
+	}
+
+	public static ChatRoomAppend creatChatRoomAppend(Member member,ChatRoom chatRoom) {
+		return ChatRoomAppend.builder()
+				.member(member)
+				.chatRoom(chatRoom)
+				.build();
+	}
 
 }

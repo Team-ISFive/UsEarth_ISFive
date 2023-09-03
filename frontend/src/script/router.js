@@ -4,8 +4,8 @@ import {createRouter, createWebHistory} from "vue-router";
 import CreateChatRoom from "@/CreateChatRoom.vue";
 
 const routes = [
-    {path:'/chat', component: Chat},
-    {path:'/chat-room', component :ChatRoom},
+    {path:'/chat',component: Chat},
+    {path:'/chat-room', name: 'chatRoom',  component :ChatRoom},
     {path: '/create-chat-room', component: CreateChatRoom}
 ]
 

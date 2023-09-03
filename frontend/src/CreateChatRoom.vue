@@ -18,6 +18,8 @@ import axios from 'axios';
 import router from "../../frontend/src/script/router";
 
 export default {
+
+
     data() {
         return {
             roomName: '',
